@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Cưới</title>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+        :root {
+            --font-heading: 'Dancing Script', cursive;
+            --font-body: 'Quicksand', sans-serif;
+            --color-primary: #e895a2;
+            --color-secondary: #6d4b4b;
+            --color-bg: #fdf6f7;
+            --color-white: #ffffff;
+        }
+
+        body {
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-bg);
+            color: var(--color-secondary);
+            text-align: center;
+            line-height: 1.8;
+            font-size: 16px;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            padding: 60px 20px;
+            background-image: url('https://files.catbox.moe/fs7hm1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--color-white);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+        }
+
+        .header-content { position: relative; z-index: 1; }
+        
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5em;
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 3.2em;
+            color: var(--color-primary);
+            margin-top: 60px;
+            border-bottom: 1px solid #f5e3e5;
+            padding-bottom: 15px;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        p { font-size: 1.1em; margin: 10px 0; }
+
+        .couple-names {
+            font-family: var(--font-heading);
+            font-size: 3.5em;
+            font-weight: 600;
+            margin: 20px 0;
+            color: var(--color-white);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .main-image { width: 100%; max-width: 450px; border-radius: 50%; margin: 30px auto; display: block; border: 5px solid var(--color-white); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .invitation-text { margin: 40px 0; font-style: normal; font-size: 1.2em; font-weight: 500;}
+
+        #countdown {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 40px auto;
+            max-width: 500px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-around;
+        }
+        #countdown div { display: flex; flex-direction: column; }
+        #countdown span { font-size: 2.2em; font-weight: 600; font-family: var(--font-heading); color: var(--color-secondary); }
+        #countdown .label { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+
+        .section-card { background-color: var(--color-white); padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 40px; }
+        
+        .map-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 20px; }
+        .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        #music-control { position: fixed; bottom: 20px; right: 20px; background-color: var(--color-primary); color: var(--color-white); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .gallery-scroll-container {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        .gallery {
+            display: flex;
+            width: fit-content;
+            /* THAY ĐỔI TỐC ĐỘ Ở ĐÂY: giảm số giây để nhanh hơn */
+            animation: scroll 30s linear infinite; 
+        }
+        .gallery:hover {
+            animation-play-state: paused;
+        }
+        .gallery-slide {
+            display: flex;
+        }
+        .gallery-slide img {
+            height: 250px;
+            width: auto;
+            margin: 0 10px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .gallery-slide img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3em; }
+            h2 { font-size: 2.5em; }
+            .couple-names { font-size: 2.2em; }
+            #countdown span { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="background-music" loop autoplay>
+        <source src="https://www.nhaccuatui.com/bai-hat/ngay-dau-tien-duc-phuc.8mG0G2Y3kssy.html" type="audio/mpeg">
+    </audio>
+    <button id="music-control">▶️</button>
+
+    <div class="container">
+        
+        <header class="header">
+            <div class="header-content" data-aos="fade-in" data-aos-duration="1500">
+                <p>Trân trọng báo tin & kính mời</p>
+                <h1>Lễ Thành Hôn</h1>
+                <p class="couple-names">Trần Văn Vũ & Lê Thị Khánh Ly</p>
+            </div>
+        </header>
+
+        <main>
+            <div data-aos="zoom-in" data-aos-duration="800">
+                <img src="https://files.catbox.moe/nfp9fi.jpg" alt="Ảnh cưới của cô dâu và chú rể" class="main-image">
+            </div>
+            
+            <section class="invitation-text" data-aos="fade-up">
+                <p>"Tình yêu không phải là nhìn về phía nhau, mà là cùng nhau nhìn về một hướng."</p>
+                <p>Sự hiện diện của bạn là niềm vinh hạnh cho gia đình chúng tôi!</p>
+            </section>
+            
+            <section id="countdown" data-aos="fade-up">
+                <div><span id="days">00</span><span class="label">Ngày</span></div>
+                <div><span id="hours">00</span><span class="label">Giờ</span></div>
+                <div><span id="minutes">00</span><span class="label">Phút</span></div>
+                <div><span id="seconds">00</span><span class="label">Giây</span></div>
+            </section>
+
+            <section class="section-card" data-aos="fade-up">
+                <h2>Thông Tin Hôn Lễ</h2>
+                <p><strong>Thời gian:</strong> 11:00, Chủ Nhật, Ngày 02 tháng 11 năm 2025</p>
+                <p><strong>Địa điểm:</strong> Nhà hàng Mai Lan 1</p>
+                <p>1 Phùng Hưng - An Phước - Long Thành - Đồng Nai</p>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4659.640035655995!2d106.96663711015215!3d10.866706376573186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174e1d74b639e49%3A0xd18ede7abf225a99!2zTmjDoCBIw6BuZyBNYWkgTGFuIDE!5e0!3m2!1svi!2s!4v1759593482038!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
+
+            <section data-aos="fade-up">
+                <h2>Khoảnh Khắc Cưới</h2>
+                <div class="gallery-scroll-container">
+                    <div class="gallery">
+                        <div class="gallery-slide">
+                            <img src="https://files.catbox.moe/fs7hm1.jpg" alt="Khoảnh khắc 1">
+                            <img src="https://files.catbox.moe/nfp9fi.jpg" alt="Khoảnh khắc 2">
+                            <img src="https://files.catbox.moe/fs7hm1.jpg" alt="Khoảnh khắc 3">
+                            <img src="https://files.catbox.moe/nfp9fi.jpg" alt="Khoảnh khắc 4">
+                            <img src="https://files.catbox.moe/fs7hm1.jpg" alt="Khoảnh khắc 5">
+                            <img src="https://files.catbox.moe/nfp9fi.jpg" alt="Khoảnh khắc 6">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://files.catbox.moe/fs7hm1.jpg" alt="Khoảnh khắc 1">
+                            <img src="https://files.catbox.moe/nfp9fi.jpg" alt="Khoảnh khắc 2">
+                            <img src="https://files.catbox.moe/fs7hm1.jpg" alt="Khoảnh khắc 3">
+                            <img src="https://files.catbox.moe/nfp9fi.jpg" alt="Khoảnh khắc 4">
+                            <img src="https://files.catbox.moe/fs7hm1.jpg" alt="Khoảnh khắc 5">
+                            <img src="https://files.catbox.moe/nfp9fi.jpg" alt="Khoảnh khắc 6">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+        <footer data-aos="fade-up">
+            <p>Made with ❤️ for our big day!</p>
+            <p>© 2025 Trần Văn Vũ & Lê Thị Khánh Ly</p>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+        });
+
+        (function() {
+            // CẬP NHẬT NGÀY GIỜ Ở ĐÂY: 02/11/2025 lúc 11:00
+            const weddingDate = new Date(2025, 10, 2, 11, 0, 0).getTime();
+
+            const countdownInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = weddingDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('countdown').innerHTML = "<h2>Chúc Mừng Hạnh Phúc!</h2>";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        })();
+
+        window.onload = function() {
+            const music = document.getElementById('background-music');
+            const musicControl = document.getElementById('music-control');
+            let isPlaying = music.autoplay && !music.paused;
+            
+            if (isPlaying) {
+                musicControl.textContent = '⏸️';
+            } else {
+                musicControl.textContent = '▶️';
+            }
+
+            // Xử lý khi click vào nút điều khiển
+            musicControl.addEventListener('click', function() {
+                if (isPlaying) {
+                    music.pause();
+                    musicControl.textContent = '▶️';
+                } else {
+                    music.play();
+                    musicControl.textContent = '⏸️';
+                }
+                isPlaying = !isPlaying;
+            });
+
+            // Thêm một event listener để xử lý trường hợp trình duyệt chặn autoplay
+            music.addEventListener('play', () => {
+                isPlaying = true;
+                musicControl.textContent = '⏸️';
+            });
+
+            music.addEventListener('pause', () => {
+                isPlaying = false;
+                musicControl.textContent = '▶️';
+            });
+        }
+    </script>
+</body>
+</html>
