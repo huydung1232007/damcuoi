@@ -21,7 +21,6 @@
       --radius:18px;
       --shadow:0 10px 30px rgba(0,0,0,.06);
       
-      /* THAY ĐỔI: Cập nhật biến font chữ */
       --font-heading: 'Great Vibes', cursive;
       --font-script-alt: 'Alex Brush', cursive;
       --font-body: 'Montserrat', sans-serif;
@@ -34,7 +33,7 @@
     /* ===== NAVBAR ===== */
     .navbar{position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid rgba(0,0,0,.08); box-shadow:0 6px 14px rgba(0,0,0,.04)}
     .navbar .inner{max-width:var(--max); margin:0 auto; padding:22px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-heading); color:var(--wine); font-weight:400; font-size:34px;} /* THAY ĐỔI */
+    .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-heading); color:var(--wine); font-weight:400; font-size:34px;}
     .brand .logo{width:36px; height:36px; border-radius:50%; background:var(--wine); color:#fff; display:grid; place-items:center; font-size:16px; font-family: var(--font-body);}
     .menu{display:flex; gap:28px; flex-wrap:wrap}
     .menu a{color:var(--wine-700); text-decoration:none; font-weight:600; font-size:15px; position:relative; padding-bottom:4px}
@@ -49,16 +48,23 @@
     /* ===== HERO ===== */
     .hero{padding-top:86px; text-align:center; color:var(--wine-700)}
     .hero .stamp{letter-spacing:.25em; color:var(--wine); font-weight:600}
-    .hero h1{font-family:var(--font-heading); font-size:clamp(56px,8vw,100px); margin:.4rem 0; white-space:nowrap; font-weight:400;} /* THAY ĐỔI */
+    .hero h1{font-family:var(--font-heading); font-size:clamp(56px,8vw,100px); margin:.4rem 0; white-space:nowrap; font-weight:400;}
     .hero h1 span{font-family:var(--font-script-alt); display:block; font-size:clamp(22px,2.5vw,36px); letter-spacing:.1em; color:var(--wine); text-transform:none;}
-    .hero .subtitle{margin-top:6px; font-weight:500; color:var(--wine-700)}
     .hero-couple-section {display: flex; flex-direction: column; align-items: center; margin-top: 26px;}
-    .hero-photos {display: flex; justify-content: center; gap: 20px; width: 100%; max-width: 600px;}
-    .photo-wrapper {display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 120px;}
-    .photo-wrapper .label-above-photo {font-family: var(--font-heading); font-weight: 400; font-size: clamp(24px, 3.5vw, 36px); color: var(--wine-700); margin-bottom: 8px;}
-    .photo-wrapper .family-names {font-size: clamp(14px, 1.8vw, 18px); line-height: 1.5; margin-bottom: 12px; color: var(--ink); font-weight:500;}
-    .photo-half{aspect-ratio:3/4; border-radius:18px; overflow:hidden; box-shadow:0 16px 38px rgba(0,0,0,.12); width: 100%; height: auto;}
-    .photo-half img{width:100%; height:100%; object-fit:cover}
+    .hero-single-photo {
+        width: 100%;
+        max-width: 450px;
+        aspect-ratio: 4/5;
+        margin: 0 auto 20px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 16px 38px rgba(0,0,0,.12);
+    }
+    .hero-single-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
     .hero-names-below-photos {margin-top: 20px; text-align: center; font-family:var(--font-heading); color:var(--wine-700);}
     .hero-names-below-photos h2 {font-size: clamp(48px,7vw,82px); margin: 0; line-height: 1.2; font-weight:400;}
     .hero-names-below-photos p {font-size: clamp(16px, 2vw, 22px); margin-top: 8px; font-weight: 500;}
@@ -86,28 +92,23 @@
     .day.is-event .dot{width:6px; height:6px; border-radius:50%; background:var(--wine); margin-top:2px}
 
     /* ===== MAP ===== */
-    .map{width:100%; height:450px; border-radius:14px; overflow: hidden; position: relative;}
-    .map{border: 0; width: 100%, height: 100%;}
+    .map-container {width:100%; height:450px; border-radius:14px; overflow: hidden; position: relative;}
+    .map-container iframe {border: 0; width: 100%; height: 100%;}
 
-    /* ===== GALLERY ===== */
-    #gallery {background-color: var(--ivory); padding: 64px 22px; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden;}
-    .gallery-main-display {background-color: var(--ivory); width: 100%; max-width: var(--max); display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;}
-    .gallery-main-names {flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-width: 250px;}
-    .gallery-main-names .name {font-family: var(--font-script-alt); font-size: clamp(60px, 9vw, 100px); color: var(--wine-700); margin: 0; line-height: 1.1;}
-    .gallery-main-names .ampersand {font-family: var(--font-script-alt); font-size: clamp(40px, 6vw, 80px); color: var(--wine-700); margin: 10px 0;}
-    .gallery-main-photo-frame {flex: 1; width: 100%; max-width: 500px; aspect-ratio: 3/4; background-color: var(--paper); border-radius: var(--radius); overflow: hidden; box-shadow: 0 16px 38px rgba(0,0,0,.12); min-width: 280px;}
-    .gallery-main-photo-frame img {width: 100%; height: 100%; object-fit: cover;}
-    .gallery-sub-section {background: var(--ivory); color: var(--ink); padding: 64px 0 0 0; width: 100%; max-width: var(--max); margin: 0 auto; text-align: center;}
-    .gallery-sub-section h2 {font-family: var(--font-script-alt); font-size: clamp(42px, 6vw, 60px); color: var(--wine-700); margin: 0 0 10px;}
-    .gallery-sub-section p {font-size: clamp(16px, 2.2vw, 22px); color: var(--ink); margin: 0 auto 30px; max-width: 700px; line-height: 1.5; font-style: italic;}
-    .gallery-photos-static {display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 800px; margin: 0 auto;}
-    .gallery-photo-item {width: clamp(280px, 45vw, 380px); aspect-ratio: 1/1; border-radius: 18px; overflow: hidden; box-shadow: 0 16px 38px rgba(0,0,0,.12);}
-    .gallery-photo-item img {width: 100%; height: 100%; object-fit: cover;}
-    /* ===== THANKS ===== */
-    .thanks{background:var(--ivory); text-align:center;}
-    .thanks h2 {font-size: clamp(32px, 5vw, 48px);}
-    .thanks .photo{margin:0 auto; aspect-ratio:3/4; width:min(560px,90%); background:#fff;}
-    .thanks .photo img {width:100%; height:100%; object-fit:cover;}
+    /* ===== GUEST BOOK ===== */
+    .guestbook-form-container { max-width: 600px; margin: 0 auto 32px; background: var(--ivory); padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    #guestbook-form input, #guestbook-form textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 12px; font-family: var(--font-body); font-size: 16px; }
+    #guestbook-form textarea { resize: vertical; }
+    .form-actions { display: flex; gap: 12px; justify-content: flex-end; }
+    .form-actions button { padding: 10px 20px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background-color .3s; }
+    .form-actions button[type="submit"] { background-color: var(--wine); color: white; }
+    .form-actions button[type="submit"]:hover { background-color: var(--wine-700); }
+    .form-actions button#suggest-wish-btn { background-color: var(--gold); color: white; }
+    .form-actions button#suggest-wish-btn:hover { background-color: #b38e52; }
+    .wishes-list { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .wish-item { background: var(--ivory); padding: 16px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .wish-item .wish-message { font-style: italic; margin: 0 0 8px; }
+    .wish-item .wish-author { font-weight: 600; text-align: right; color: var(--wine); }
 
     footer{text-align:center; padding:28px; color:var(--wine-700); background:var(--ivory)}
 
@@ -128,22 +129,9 @@
         .hamburger.active .bar:nth-child(2) {opacity: 0;}
         .hamburger.active .bar:nth-child(1) {transform: translateY(8px) rotate(45deg);}
         .hamburger.active .bar:nth-child(3) {transform: translateY(-8px) rotate(-45deg);}
-        .photo-wrapper {width: 100%; max-width: 280px;}
-        .hero-names-below-photos h2 {font-size: clamp(28px, 4.5vw, 48px);}
-        .hero-names-below-photos p {font-size: clamp(15px, 1.8vw, 20px);}
-        .photo-wrapper .family-names {font-size: clamp(12px, 2vw, 16px);}
+        .hero-names-below-photos h2 {font-size: clamp(40px, 10vw, 60px);}
         #giftGrid{grid-template-columns:1fr;}
-        .gallery-main-display {flex-direction: row; gap: 15px; padding: 30px 22px;}
-        .gallery-main-names {flex: 1; min-width: 120px; align-items: center;}
-        .gallery-main-names .name {font-size: clamp(40px, 8vw, 60px);}
-        .gallery-main-names .ampersand {font-size: clamp(30px, 5vw, 40px);}
-        .gallery-main-photo-frame {flex: 1; min-width: 150px; width: 100%; max-width: unset;}
-        .navbar .hamburger { display: flex; }
-        .gallery-sub-section {padding: 48px 22px; text-align: center;}
-        .gallery-photos-static {display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; align-items: flex-start;}
-        .gallery-photo-item {width: 48%; max-width: unset; margin: 0; aspect-ratio: 1/1; min-width: 140px;}
-        .gallery-sub-section h2 {font-size: clamp(28px, 4.5vw, 42px);}
-        .gallery-sub-section p {font-size: clamp(14px, 2vw, 18px);}
+        .form-actions { flex-direction: column; }
     }
   </style>
 </head>
@@ -166,9 +154,9 @@
       <nav class="menu" aria-label="Primary">
         <a href="#home">Wedding Invitation</a>
         <a href="#details">Event</a>
-        <a href="#gift">Gift</a>
-        <a href="#gallery">Album</a>
         <a href="#map">Map</a>
+        <a href="#guestbook">Guest Book</a>
+        <a href="#gift">Gift</a>
       </nav>
     </div>
   </header>
@@ -179,23 +167,8 @@
       <h1><span>Wedding Invitation</span></h1>
       
       <div class="hero-couple-section">
-        <div class="hero-photos">
-            <div class="photo-wrapper">
-                <div class="label-above-photo">Nhà gái</div>
-                <div class="family-names">
-                    Ông Nguyễn Huy Quân<br>
-                    Bà Lê Thị Lành
-                </div>
-                <div class="photo-half"><img src="https://files.catbox.moe/fa78hw.jpg" alt="Ảnh cô dâu"/></div>
-            </div>
-            <div class="photo-wrapper">
-                <div class="label-above-photo">Nhà trai</div>
-                <div class="family-names">
-                    Ông Trần Văn Thắng<br>
-                    Bà Nguyễn Thị Bình
-                </div>
-                <div class="photo-half"><img src="https://files.catbox.moe/1jmpvl.jpg" alt="Ảnh chú rể"/></div>
-            </div>
+        <div class="hero-single-photo">
+            <img src="https://files.catbox.moe/0ibapt.jpg" alt="Ảnh cưới của Khánh Ly & Văn Vũ" loading="lazy"/>
         </div>
         <div class="hero-names-below-photos">
             <h2>Khánh Ly  &  Văn Vũ</h2>
@@ -241,12 +214,13 @@
       <div class="calendar" aria-label="Calendar November 2025">
         <div class="month"><strong>Tháng 11 / 2025</strong><span style="color:var(--muted)">Ngày cưới được đánh dấu</span></div>
         <div class="grid">
-          <div class="cell dow">T2</div><div class="cell dow">T3</div><div class="cell dow">T4</div><div class="cell dow">T5</div><div class="cell dow">T6</div><div class="cell dow">T7</div><div class="cell day">CN</div>
-          <div class="cell day"> </div><div class="cell day"> </div><div class="cell day"> </div><div class="cell day"> </div><div class="cell day"> </div><div class="cell day">1</div><div class="cell day is-event"><div>2</div><div class="dot"></div></div>
-          <div class="cell day">3</div><div class="cell day">4</div><div class="cell day">5</div><div class="cell day">6</div><div class="cell day">7</div><div class="cell day">8</div><div class="cell day">9</div>
-          <div class="cell day">10</div><div class="cell day">11</div><div class="cell day">12</div><div class="cell day">13</div><div class="cell day">14</div><div class="cell day">15</div><div class="cell day">16</div>
-          <div class="cell day">17</div><div class="cell day">18</div><div class="cell day">19</div><div class="cell day">20</div><div class="cell day">21</div><div class="cell day">22</div><div class="cell day">23</div>
-          <div class="cell day">24</div><div class="cell day">25</div><div class="cell day">26</div><div class="cell day">27</div><div class="cell day">28</div><div class="cell day">29</div><div class="cell day">30</div>
+            <div class="cell dow">CN</div><div class="cell dow">T2</div><div class="cell dow">T3</div><div class="cell dow">T4</div><div class="cell dow">T5</div><div class="cell dow">T6</div><div class="cell dow">T7</div>
+            <div class="cell day"> </div><div class="cell day"> </div><div class="cell day"> </div><div class="cell day"> </div><div class="cell day"> </div><div class="cell day"> </div><div class="cell day">1</div>
+            <div class="cell day is-event"><div>2</div><div class="dot"></div></div><div class="cell day">3</div><div class="cell day">4</div><div class="cell day">5</div><div class="cell day">6</div><div class="cell day">7</div><div class="cell day">8</div>
+            <div class="cell day">9</div><div class="cell day">10</div><div class="cell day">11</div><div class="cell day">12</div><div class="cell day">13</div><div class="cell day">14</div><div class="cell day">15</div>
+            <div class="cell day">16</div><div class="cell day">17</div><div class="cell day">18</div><div class="cell day">19</div><div class="cell day">20</div><div class="cell day">21</div><div class="cell day">22</div>
+            <div class="cell day">23</div><div class="cell day">24</div><div class="cell day">25</div><div class="cell day">26</div><div class="cell day">27</div><div class="cell day">28</div><div class="cell day">29</div>
+            <div class="cell day">30</div>
         </div>
       </div>
     </section>
@@ -254,8 +228,29 @@
     <section id="map" class="section">
       <h2 style="color:var(--wine-700); text-align:center; margin:0 0 12px; font-size:clamp(32px, 4vw, 42px);">Bản đồ địa điểm</h2>
       <p style="text-align:center; margin:0 0 12px">Bấm để mở trên Google Maps.</p>
-       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.278318681591!2d106.96776577480618!3d10.866423289287862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174e1d74b639e49%3A0xd18ede7abf225a99!2zTmjDoCBIw6BuZyBNYWkgTGFuIDE!5e0!3m2!1svi!2s!4v1759603474376!5m2!1svi!2s" ></iframe></iframe>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.278318681591!2d106.96776577480618!3d10.866423289287862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174e1d74b639e49%3A0xd18ede7abf225a99!2zTmjDoCBIw6BuZyBNYWkgTGFuIDE!5e0!3m2!1svi!2s!4v1759603474376!5m2!1svi!2s" loading="lazy"></iframe>
+      </div>
     </section>
+
+    <section id="guestbook" class="section">
+        <h2 style="color:var(--wine-700); text-align:center; margin:0 0 24px; font-size:clamp(32px, 4vw, 42px);">Sổ lưu bút</h2>
+        <div class="guestbook-form-container">
+          <form id="guestbook-form">
+            <input type="text" id="guest-name" placeholder="Tên của bạn" required>
+            <textarea id="guest-message" placeholder="Để lại lời chúc của bạn ở đây..." rows="4" required></textarea>
+            <div class="form-actions">
+              <button type="submit">Gửi lời chúc</button>
+              <button type="button" id="suggest-wish-btn">✨ Gợi ý lời chúc</button>
+            </div>
+            <div id="loading-indicator" style="display: none; text-align: center; margin-top: 10px; color: var(--wine);">Đang tạo lời chúc...</div>
+          </form>
+        </div>
+        <div class="wishes-list" id="wishes-list">
+          <!-- Wishes will be appended here -->
+        </div>
+    </section>
+
     <section id="gift" class="section">
       <div style="text-align:center">
         <h2 style="color:var(--wine-700); margin:0 0 8px; font-size:clamp(32px, 4vw, 42px);">Gửi lời chúc & món quà</h2>
@@ -270,42 +265,12 @@
         <div class="infoItem">
           <div class="label">Mã QR</div>
           <div class="photo" style="aspect-ratio:1/1;background:#fff;display:grid;place-items:center">
-            <img src="https://files.catbox.moe/gs1dbn.jpg" alt="QR ngân hàng" style="width:72%;height:auto"/>
+            <img src="https://files.catbox.moe/gs1dbn.jpg" alt="QR ngân hàng" style="width:72%;height:auto" loading="lazy"/>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="gallery" class="gallery-section">
-       <h2 class="main-gallery-title">Khoảnh khắc của chúng tôi</h2> 
-       <div class="gallery-main-display">
-            <div class="gallery-main-names">
-                <div class="name">Vũ</div>
-                <div class="ampersand">&</div>
-                <div class="name">Ly</div>
-            </div>
-            <div class="gallery-main-photo-frame">
-                <img src="https://files.catbox.moe/q1d2s7.jpg" alt="Ảnh cưới cặp đôi chính">
-            </div>
-        </div>
-        
-        <div class="gallery-sub-section">
-            <h2 style="text-align:center;">Chapter Three</h2>
-            <p style="text-align:center;">"Giữa thế gian huyền ảo, em là điều duy nhất đáng giá."</p>
-            <div class="gallery-photos-static">
-                <div class="gallery-photo-item"><img src="https://files.catbox.moe/lsg3b1.jpg" alt="Ảnh cưới cặp đôi 1"/></div>
-                <div class="gallery-photo-item"><img src="https://files.catbox.moe/7dqwep.jpg" alt="Ảnh cưới cặp đôi 2"/></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section thanks">
-      <h2 style="color:var(--wine-700); text-align:center; margin:0 0 8px">Trân trọng cảm ơn!</h2>
-      <p style="text-align:center; margin:0 0 12px">Rất mong được đón tiếp bạn trong ngày vui.</p>
-      <div class="photo">
-        <img src="https://files.catbox.moe/0ibapt.jpg" alt="Ảnh cảm ơn">
-      </div>
-    </section>
   </main>
 
   <footer>© 2025 Khánh Ly & Văn Vũ — Thiệp mời cưới</footer>
@@ -331,7 +296,7 @@
     
     // ===== COUNTDOWN TIMER =====
     (function(){
-      const weddingDate = new Date('2025-11-02T12:00:00').getTime();
+      const weddingDate = new Date('2025-11-02T11:00:00').getTime();
       const countdownEl = document.querySelector('.countdown');
       const timer = setInterval(function() {
         const now = new Date().getTime();
@@ -367,8 +332,9 @@
         
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (navbarHamburger) navbarHamburger.classList.remove('active');
-                menu.classList.remove('active');
+                 if (menu.classList.contains('active')) {
+                  toggleMenu(navbarHamburger);
+                }
             });
         });
     })();
@@ -377,31 +343,129 @@
     (function(){
         const music = document.getElementById('background-music');
         const toggleButton = document.getElementById('music-toggle');
+        let userHasInteracted = false;
 
-        const playPromise = music.play();
-
-        if (playPromise !== undefined) {
-            playPromise.then(_ => {
-                toggleButton.textContent = '⏸️';
-            }).catch(error => {
-                console.log('Autoplay was prevented.');
-                toggleButton.textContent = '▶️';
-            });
+        function playMusic() {
+            if (userHasInteracted) {
+                const playPromise = music.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Playback failed:', error);
+                        toggleButton.textContent = '▶️';
+                    });
+                }
+            }
         }
         
-        toggleButton.addEventListener('click', () => {
+        document.body.addEventListener('click', () => {
+            if (!userHasInteracted) {
+                userHasInteracted = true;
+                playMusic();
+            }
+        }, { once: true });
+
+        toggleButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            userHasInteracted = true;
             if (music.paused) {
-                music.play();
-                toggleButton.textContent = '⏸️';
+                playMusic();
             } else {
                 music.pause();
-                toggleButton.textContent = '▶️';
             }
         });
 
         music.onplay = () => { toggleButton.textContent = '⏸️'; };
         music.onpause = () => { toggleButton.textContent = '▶️'; };
     })();
+
+    // ===== GUEST BOOK & GEMINI API =====
+    (function() {
+        const guestbookForm = document.getElementById('guestbook-form');
+        const guestNameInput = document.getElementById('guest-name');
+        const guestMessageTextarea = document.getElementById('guest-message');
+        const suggestWishBtn = document.getElementById('suggest-wish-btn');
+        const wishesList = document.getElementById('wishes-list');
+        const loadingIndicator = document.getElementById('loading-indicator');
+
+        // Function to add a wish to the list
+        const addWishToList = (name, message) => {
+            const wishItem = document.createElement('div');
+            wishItem.className = 'wish-item';
+            
+            const messageP = document.createElement('p');
+            messageP.className = 'wish-message';
+            messageP.textContent = `"${message}"`;
+
+            const authorP = document.createElement('p');
+            authorP.className = 'wish-author';
+            authorP.textContent = `- ${name}`;
+
+            wishItem.appendChild(messageP);
+            wishItem.appendChild(authorP);
+
+            wishesList.prepend(wishItem);
+        }
+
+        // Add some initial wishes
+        addWishToList("Một người bạn", "Chúc hai bạn trăm năm hạnh phúc, tình yêu vĩnh cửu và sớm có tin vui nhé!");
+        addWishToList("Gia đình", "Chúc mừng hạnh phúc hai con. Mong hai con luôn yêu thương, nhường nhịn và cùng nhau xây dựng một gia đình thật ấm áp.");
+
+        // Handle form submission
+        guestbookForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = guestNameInput.value.trim();
+            const message = guestMessageTextarea.value.trim();
+
+            if (name && message) {
+                addWishToList(name, message);
+                guestbookForm.reset();
+            }
+        });
+
+        // Handle Gemini wish suggestion
+        suggestWishBtn.addEventListener('click', async () => {
+            loadingIndicator.style.display = 'block';
+            suggestWishBtn.disabled = true;
+
+            const apiKey = ""; // API key is handled by the environment
+            const apiUrl = `https://generativelaunguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            const userQuery = "Viết một lời chúc đám cưới ngắn gọn, ấm áp và ý nghĩa bằng tiếng Việt cho cặp đôi Khánh Ly và Văn Vũ. Giữ độ dài khoảng 1-2 câu.";
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    guestMessageTextarea.value = candidate.content.parts[0].text.trim();
+                } else {
+                    guestMessageTextarea.value = "Xin lỗi, không thể tạo lời chúc lúc này. Vui lòng thử lại.";
+                }
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                guestMessageTextarea.value = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
+            } finally {
+                loadingIndicator.style.display = 'none';
+                suggestWishBtn.disabled = false;
+            }
+        });
+    })();
+
   </script>
 </body>
 </html>
+
