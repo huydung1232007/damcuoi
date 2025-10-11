@@ -80,6 +80,8 @@
     #giftGrid{grid-template-columns:repeat(2,1fr);}
     .infoItem{background:var(--ivory); border-radius:14px; padding:18px; box-shadow:var(--shadow); text-align:center}
     .infoItem .big{font-family:var(--font-heading); color:var(--wine-700); font-size:clamp(32px,4.5vw,46px); font-weight:400;}
+    /* Thay đổi phông chữ cho tên ngân hàng */
+    #bank-name { font-family: var(--font-body); font-weight: 600; }
 
     /* ===== CALENDAR ===== */
     .calendar{display:grid; gap:8px; max-width:520px; margin:0 auto}
@@ -99,16 +101,14 @@
     .guestbook-form-container { max-width: 600px; margin: 0 auto 32px; background: var(--ivory); padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); }
     #guestbook-form input, #guestbook-form textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 12px; font-family: var(--font-body); font-size: 16px; }
     #guestbook-form textarea { resize: vertical; }
-    .form-actions { display: flex; gap: 12px; justify-content: flex-end; }
-    .form-actions button { padding: 10px 20px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background-color .3s; }
-    .form-actions button[type="submit"] { background-color: var(--wine); color: white; }
-    .form-actions button[type="submit"]:hover { background-color: var(--wine-700); }
-    .form-actions button#suggest-wish-btn { background-color: var(--gold); color: white; }
-    .form-actions button#suggest-wish-btn:hover { background-color: #b38e52; }
+    .form-actions { display: flex; justify-content: flex-end; }
+    .form-actions button { padding: 10px 20px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background-color .3s; background-color: var(--wine); color: white; }
+    .form-actions button:hover { background-color: var(--wine-700); }
     .wishes-list { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
     .wish-item { background: var(--ivory); padding: 16px; border-radius: var(--radius); box-shadow: var(--shadow); }
     .wish-item .wish-message { font-style: italic; margin: 0 0 8px; }
     .wish-item .wish-author { font-weight: 600; text-align: right; color: var(--wine); }
+
 
     footer{text-align:center; padding:28px; color:var(--wine-700); background:var(--ivory)}
 
@@ -168,11 +168,10 @@
       
       <div class="hero-couple-section">
         <div class="hero-single-photo">
-            <img src="https://files.catbox.moe/0ibapt.jpg" alt="Ảnh cưới của Khánh Ly & Văn Vũ" loading="lazy"/>
+            <img src="https://files.catbox.moe/q60sme.jpg" alt="Ảnh cưới của Khánh Ly & Văn Vũ" loading="lazy"/>
         </div>
         <div class="hero-names-below-photos">
             <h2>Khánh Ly  &  Văn Vũ</h2>
-            <p>Chủ nhật - 02 tháng 11, 2025</p>
         </div>
       </div>
     </section>
@@ -232,7 +231,7 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.278318681591!2d106.96776577480618!3d10.866423289287862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174e1d74b639e49%3A0xd18ede7abf225a99!2zTmjDoCBIw6BuZyBNYWkgTGFuIDE!5e0!3m2!1svi!2s!4v1759603474376!5m2!1svi!2s" loading="lazy"></iframe>
       </div>
     </section>
-
+    
     <section id="guestbook" class="section">
         <h2 style="color:var(--wine-700); text-align:center; margin:0 0 24px; font-size:clamp(32px, 4vw, 42px);">Sổ lưu bút</h2>
         <div class="guestbook-form-container">
@@ -241,9 +240,7 @@
             <textarea id="guest-message" placeholder="Để lại lời chúc của bạn ở đây..." rows="4" required></textarea>
             <div class="form-actions">
               <button type="submit">Gửi lời chúc</button>
-              <button type="button" id="suggest-wish-btn">✨ Gợi ý lời chúc</button>
             </div>
-            <div id="loading-indicator" style="display: none; text-align: center; margin-top: 10px; color: var(--wine);">Đang tạo lời chúc...</div>
           </form>
         </div>
         <div class="wishes-list" id="wishes-list">
@@ -253,19 +250,19 @@
 
     <section id="gift" class="section">
       <div style="text-align:center">
-        <h2 style="color:var(--wine-700); margin:0 0 8px; font-size:clamp(32px, 4vw, 42px);">Gửi lời chúc & món quà</h2>
-        <p>Nếu không tiện tham dự, bạn có thể gửi lời chúc yêu thương cho chúng mình. (Tuỳ chọn)</p>
+        <h2 style="color:var(--wine-700); margin:0 0 8px; font-size:clamp(32px, 4vw, 42px);">Gửi lời chúc và món quà</h2>
+        <p>Nếu không tiện tham dự, bạn có thể gửi lời chúc yêu thương cho chúng mình.</p>
       </div>
       <div class="infoGrid" id="giftGrid" style="margin-top:12px">
         <div class="infoItem">
           <div class="label">Ngân hàng</div>
-          <div class="big">MBBank</div>
-          <div>Huy Dũng — 0375738909</div>
+          <div class="big" id="bank-name">MBBank</div>
+          <div>Khánh Ly — 0973785076</div>
         </div>
         <div class="infoItem">
           <div class="label">Mã QR</div>
           <div class="photo" style="aspect-ratio:1/1;background:#fff;display:grid;place-items:center">
-            <img src="https://files.catbox.moe/gs1dbn.jpg" alt="QR ngân hàng" style="width:72%;height:auto" loading="lazy"/>
+            <img src="https://files.catbox.moe/b0wus3.jpg" alt="QR ngân hàng" style="width:72%;height:auto" loading="lazy"/>
           </div>
         </div>
       </div>
@@ -273,7 +270,7 @@
 
   </main>
 
-  <footer>© 2025 Khánh Ly & Văn Vũ — Thiệp mời cưới</footer>
+  <footer>© 2025 Khánh Ly & Văn Vũ</footer>
 
   <script>
     // ===== Active menu highlight when scrolling =====
@@ -377,15 +374,13 @@
         music.onplay = () => { toggleButton.textContent = '⏸️'; };
         music.onpause = () => { toggleButton.textContent = '▶️'; };
     })();
-
-    // ===== GUEST BOOK & GEMINI API =====
+    
+    // ===== GUEST BOOK =====
     (function() {
         const guestbookForm = document.getElementById('guestbook-form');
         const guestNameInput = document.getElementById('guest-name');
         const guestMessageTextarea = document.getElementById('guest-message');
-        const suggestWishBtn = document.getElementById('suggest-wish-btn');
         const wishesList = document.getElementById('wishes-list');
-        const loadingIndicator = document.getElementById('loading-indicator');
 
         // Function to add a wish to the list
         const addWishToList = (name, message) => {
@@ -406,7 +401,7 @@
             wishesList.prepend(wishItem);
         }
 
-        // Add some initial wishes
+        // Add some initial wishes for demonstration
         addWishToList("Một người bạn", "Chúc hai bạn trăm năm hạnh phúc, tình yêu vĩnh cửu và sớm có tin vui nhé!");
         addWishToList("Gia đình", "Chúc mừng hạnh phúc hai con. Mong hai con luôn yêu thương, nhường nhịn và cùng nhau xây dựng một gia đình thật ấm áp.");
 
@@ -421,50 +416,7 @@
                 guestbookForm.reset();
             }
         });
-
-        // Handle Gemini wish suggestion
-        suggestWishBtn.addEventListener('click', async () => {
-            loadingIndicator.style.display = 'block';
-            suggestWishBtn.disabled = true;
-
-            const apiKey = ""; // API key is handled by the environment
-            const apiUrl = `https://generativelaunguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            const userQuery = "Viết một lời chúc đám cưới ngắn gọn, ấm áp và ý nghĩa bằng tiếng Việt cho cặp đôi Khánh Ly và Văn Vũ. Giữ độ dài khoảng 1-2 câu.";
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-            };
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API call failed with status: ${response.status}`);
-                }
-
-                const result = await response.json();
-                const candidate = result.candidates?.[0];
-
-                if (candidate && candidate.content?.parts?.[0]?.text) {
-                    guestMessageTextarea.value = candidate.content.parts[0].text.trim();
-                } else {
-                    guestMessageTextarea.value = "Xin lỗi, không thể tạo lời chúc lúc này. Vui lòng thử lại.";
-                }
-
-            } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                guestMessageTextarea.value = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
-            } finally {
-                loadingIndicator.style.display = 'none';
-                suggestWishBtn.disabled = false;
-            }
-        });
     })();
-
   </script>
 </body>
 </html>
